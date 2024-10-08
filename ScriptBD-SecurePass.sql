@@ -1,4 +1,4 @@
-CREATE DATABASE securepass;
+#CREATE DATABASE securepass;
 USE securepass;
 
 #drop database securepass;
