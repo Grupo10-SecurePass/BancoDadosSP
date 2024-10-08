@@ -1,4 +1,4 @@
-#CREATE DATABASE securepass;
+CREATE DATABASE securepass;
 USE securepass;
 
 #drop database securepass;
@@ -41,15 +41,11 @@ stats VARCHAR(45),
 	CONSTRAINT chStatsUsuario CHECK (stats in ('ativo','inativo')),
 fkResponsavel INT,
 	CONSTRAINT fkResponsavelUsuario FOREIGN KEY (fkResponsavel)
-		REFERENCES usuario(idUsuario)
+		REFERENCES usuario(idUsuario, fkNR)
 );
 
 INSERT INTO usuario VALUES 
-(default, 4826, 'Ayrton', 12345678901, 'ayrton@gmail.com', '1234', 'representante', 'ativo', null);
-
-select * from usuario;
-
-update usuario set stats = 'inativo' where idUsuario = 1;
+(default, 4826, 'Ayrton', 12345678901, 'ayrton@gmail.com', '1234', 'representante', 'ativo', null, 4826);
 
 CREATE TABLE dispositivo(
 idDispositivo INT auto_increment,
@@ -95,8 +91,6 @@ PRIMARY KEY (idCaptura, fkDispositivo, fkNR, fkComponente),
 registro FLOAT,
 dataRegistro DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
-
-select * from captura;
 
 CREATE TABLE alerta(
 idAlerta INT auto_increment,
