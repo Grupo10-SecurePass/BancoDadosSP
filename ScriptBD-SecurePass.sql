@@ -83,7 +83,7 @@ fkDispositivo INT,
 		REFERENCES dispositivo(idDispositivo),
 fkNR INT,
 	CONSTRAINT fkNrCaptura FOREIGN KEY (fkNR)
-		REFERENCES dispositivo(fkNR),
+		REFERENCES empresa(NR),
 fkComponente INT,
 	CONSTRAINT fkComponenteCaptura FOREIGN KEY (fkComponente)
 		REFERENCES componente(idComponente),
