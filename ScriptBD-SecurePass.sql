@@ -25,11 +25,11 @@ INSERT INTO empresa VALUES
 select * from empresa;
 
 CREATE TABLE usuario(
-idUsuario INT auto_increment,
+idUsuario INT PRIMARY KEY auto_increment,
 fkNR INT,
 	CONSTRAINT fkNrUsuario FOREIGN KEY (fkNR)
 		REFERENCES empresa(NR),
-PRIMARY KEY(idUsuario, fkNR),
+#PRIMARY KEY(idUsuario, fkNR),
 nome VARCHAR(100),
 CPF CHAR(11) UNIQUE NOT NULL,
 email VARCHAR(256) UNIQUE NOT NULL,
@@ -41,18 +41,18 @@ stats VARCHAR(45),
 	CONSTRAINT chStatsUsuario CHECK (stats in ('ativo','inativo')),
 fkResponsavel INT,
 	CONSTRAINT fkResponsavelUsuario FOREIGN KEY (fkResponsavel)
-		REFERENCES usuario(idUsuario, fkNR)
+		REFERENCES usuario(idUsuario)
 );
 
 INSERT INTO usuario VALUES 
-(default, 4826, 'Ayrton', 12345678901, 'ayrton@gmail.com', '1234', 'representante', 'ativo', null, 4826);
+(default, 4826, 'Ayrton', 12345678901, 'ayrton@gmail.com', '1234', 'representante', 'ativo', null);
 
 CREATE TABLE dispositivo(
-idDispositivo INT auto_increment,
+idDispositivo INT PRIMARY KEY auto_increment,
 fkNR INT,
 CONSTRAINT fkNrDispositivo FOREIGN KEY (fkNR)
 		REFERENCES empresa(NR),
-PRIMARY KEY(idDispositivo, fkNR),
+#PRIMARY KEY(idDispositivo, fkNR),
 nome VARCHAR(100) UNIQUE,
 stats VARCHAR(45),
 	CONSTRAINT chStatsDispositivo CHECK (stats in ('ativo', 'inativo'))
@@ -77,7 +77,7 @@ INSERT INTO componente(nome, unidadeDeMedida) VALUES
 
 
 CREATE TABLE captura(
-idCaptura INT auto_increment,
+idCaptura INT PRIMARY KEY auto_increment,
 fkDispositivo INT,
 	CONSTRAINT fkDispositivoCaptura FOREIGN KEY (fkDispositivo)
 		REFERENCES dispositivo(idDispositivo),
@@ -87,20 +87,20 @@ fkNR INT,
 fkComponente INT,
 	CONSTRAINT fkComponenteCaptura FOREIGN KEY (fkComponente)
 		REFERENCES componente(idComponente),
-PRIMARY KEY (idCaptura, fkDispositivo, fkNR, fkComponente),
+#PRIMARY KEY (idCaptura, fkDispositivo, fkNR, fkComponente),
 registro FLOAT,
 dataRegistro DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE alerta(
-idAlerta INT auto_increment,
+idAlerta INT PRIMARY KEY auto_increment,
 fkCaptura INT,
 	CONSTRAINT fkCapturaAlerta FOREIGN KEY (fkCaptura)
 		REFERENCES captura(idCaptura),
 fkNR INT,
 	CONSTRAINT fkNrAlerta FOREIGN KEY (fkNR)
 		REFERENCES empresa(NR),
-PRIMARY KEY (idAlerta, fkCaptura, fkNR),
+#PRIMARY KEY (idAlerta, fkCaptura, fkNR),
 dataAlerta DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
 descricao TEXT
 );
