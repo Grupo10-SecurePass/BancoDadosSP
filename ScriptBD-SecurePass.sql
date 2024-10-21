@@ -72,8 +72,10 @@ unidadeDeMedida VARCHAR(45)
 INSERT INTO componente(nome, unidadeDeMedida) VALUES
 ('PercCPU', '%'),
 ('PercMEM', '%'),
-('PercDISCO', '%');
-#falta da rede
+('PercDISCO', '%'),
+('RedeRecebida', 'MB'),
+('RedeEnviada', 'MB');
+
 
 
 CREATE TABLE captura(
