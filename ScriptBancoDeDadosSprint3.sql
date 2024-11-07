@@ -68,6 +68,7 @@ INSERT INTO usuario (nome, cpf, email, senha, status, fkCargo, fkLinha, fkNR) VA
 CREATE TABLE dispositivo (
     idDispositivo INT PRIMARY KEY AUTO_INCREMENT,
     nome VARCHAR(100) UNIQUE,
+    ipv4Catraca VARCHAR(15) UNIQUE,
     status TINYINT,
     fkLinha INT,
     CONSTRAINT fkLinhaDispositivo FOREIGN KEY (fkLinha) REFERENCES linha(idLinha)
