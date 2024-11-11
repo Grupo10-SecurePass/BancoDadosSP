@@ -74,8 +74,8 @@ CREATE TABLE dispositivo (
     CONSTRAINT fkLinhaDispositivo FOREIGN KEY (fkLinha) REFERENCES linha(idLinha)
 );
 
-INSERT INTO dispositivo(nome, status, fkLinha) VALUES
-('DESKTOP-17C842E', 1, 1);
+INSERT INTO dispositivo(nome, ipv4Catraca, status, fkLinha) VALUES
+('DESKTOP-17C842E', "98.81.77.174",1, 1);
 
 CREATE TABLE componente (
     idComponente INT PRIMARY KEY AUTO_INCREMENT,
