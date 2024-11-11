@@ -90,8 +90,8 @@ INSERT INTO componente(nome, unidadeDeMedida) VALUES
 ('RedeRecebida', 'MB'),
 ('RedeEnviada', 'MB'),
 ('FreqCPU', 'GHz'),
-('TempoResposta', 'ms'),
-('Perda de Pacotes', '%');
+('PerdaPacote', '%'),
+('TempoResposta', 'ms');
 
 CREATE TABLE captura (
     idCaptura INT PRIMARY KEY AUTO_INCREMENT,
