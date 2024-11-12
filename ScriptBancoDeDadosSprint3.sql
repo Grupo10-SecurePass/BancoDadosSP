@@ -125,8 +125,8 @@ INSERT INTO limite (valor, tipo,fkComponente, fkDispositivo, fkLinha) VALUES
 (1000.0, 'abaixo', 4, 1, 1),
 (1000.0, 'abaixo', 5, 1, 1),
 (3.5, 'abaixo', 6, 1, 1),
-(200.0, 'acima', 7, 1, 1),
-(3000.0, 'acima', 8, 1, 1);
+(10.0, 'acima', 7, 1, 1),
+(200.0, 'acima', 8, 1, 1);
 
 CREATE TABLE feedback (
     idFeedback INT PRIMARY KEY AUTO_INCREMENT,
