@@ -142,6 +142,7 @@ CREATE TABLE alerta (
     idAlerta INT PRIMARY KEY AUTO_INCREMENT,
     dataAlerta DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     descricao TEXT,
+    visualizacao TINYINT,
     fkComponente INT,
    CONSTRAINT fkAlertaComponente FOREIGN KEY (fkComponente) REFERENCES componente(idComponente),
     fkDispositivo INT,
