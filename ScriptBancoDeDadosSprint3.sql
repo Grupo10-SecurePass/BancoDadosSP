@@ -75,7 +75,8 @@ CREATE TABLE dispositivo (
 );
 
 INSERT INTO dispositivo(nome, ipv4Catraca, status, fkLinha) VALUES
-('DESKTOP-17C842E', "98.81.77.174",1, 1);
+('DESKTOP-17C842E', "98.81.77.174",1, 1),
+('MaquinaTeste', "98.81.77.174",1, 1);
 
 CREATE TABLE componente (
     idComponente INT PRIMARY KEY AUTO_INCREMENT,
@@ -104,6 +105,49 @@ CREATE TABLE captura (
     fkDispositivo INT,
     CONSTRAINT fkCapturaDispositivo FOREIGN KEY (fkDispositivo) REFERENCES dispositivo(idDispositivo)
 );
+
+-- Inserções para o dia de hoje (substitua com a data atual, por exemplo: '2024-10-24')
+INSERT INTO captura (registro, dataRegistro, fkComponente, fkLinha, fkDispositivo) 
+VALUES (3.5, '2024-10-24 10:00:00', 6, 1, 1);
+
+INSERT INTO captura (registro, dataRegistro, fkComponente, fkLinha, fkDispositivo) 
+VALUES (15.2, '2024-10-24 11:30:00', 8, 1, 1);
+
+-- Inserções para 1 dia atrás
+INSERT INTO captura (registro, dataRegistro, fkComponente, fkLinha, fkDispositivo) 
+VALUES (4.8, '2024-10-23 09:15:00', 6, 1, 1);
+
+INSERT INTO captura (registro, dataRegistro, fkComponente, fkLinha, fkDispositivo) 
+VALUES (30.6, '2024-10-23 14:45:00', 8, 1, 1);
+
+-- Inserções para 2 dias atrás
+INSERT INTO captura (registro, dataRegistro, fkComponente, fkLinha, fkDispositivo) 
+VALUES (5.0, '2024-10-22 08:30:00', 6, 1, 1);
+
+INSERT INTO captura (registro, dataRegistro, fkComponente, fkLinha, fkDispositivo) 
+VALUES (42.7, '2024-10-22 12:10:00', 8, 1, 1);
+
+-- Inserções para 3 dias atrás
+INSERT INTO captura (registro, dataRegistro, fkComponente, fkLinha, fkDispositivo) 
+VALUES (3.9, '2024-10-21 10:20:00', 6, 1, 1);
+
+INSERT INTO captura (registro, dataRegistro, fkComponente, fkLinha, fkDispositivo) 
+VALUES (65.4, '2024-10-21 13:50:00', 8, 1, 1);
+
+-- Inserções para 4 dias atrás
+INSERT INTO captura (registro, dataRegistro, fkComponente, fkLinha, fkDispositivo) 
+VALUES (5.8, '2024-10-20 07:45:00', 6, 1, 2);
+
+INSERT INTO captura (registro, dataRegistro, fkComponente, fkLinha, fkDispositivo) 
+VALUES (23.1, '2024-10-20 16:30:00', 8, 1, 2);
+
+-- Inserções para 5 dias atrás
+INSERT INTO captura (registro, dataRegistro, fkComponente, fkLinha, fkDispositivo) 
+VALUES (4.2, '2024-10-19 09:00:00', 6, 1, 2);
+
+INSERT INTO captura (registro, dataRegistro, fkComponente, fkLinha, fkDispositivo) 
+VALUES (78.3, '2024-10-19 15:20:00', 8, 1, 2);
+
 
 CREATE TABLE limite (
     idLimite INT PRIMARY KEY AUTO_INCREMENT,
@@ -152,3 +196,45 @@ CREATE TABLE alerta (
    fkCaptura INT,
    CONSTRAINT fkAlertaCaptura FOREIGN KEY (fkCaptura) REFERENCES captura(idCaptura)
 );
+
+-- Alerta para captura do dia de hoje
+INSERT INTO alerta (dataAlerta, descricao, visualizacao, fkComponente, fkDispositivo, fkLinha, fkCaptura) 
+VALUES ('2024-10-24 10:00:00', 'Componente 6 está abaixo do limite de 5.0: valor atual é 3.5', 0, 6, 1, 1, 1);
+
+INSERT INTO alerta (dataAlerta, descricao, visualizacao, fkComponente, fkDispositivo, fkLinha, fkCaptura) 
+VALUES ('2024-10-24 11:30:00', 'Componente 8 está abaixo do limite de 50.0: valor atual é 15.2', 0, 8, 1, 1, 2);
+
+-- Alerta para captura de 1 dia atrás
+INSERT INTO alerta (dataAlerta, descricao, visualizacao, fkComponente, fkDispositivo, fkLinha, fkCaptura) 
+VALUES ('2024-10-23 09:15:00', 'Componente 6 está abaixo do limite de 5.0: valor atual é 4.8', 0, 6, 1, 1, 3);
+
+INSERT INTO alerta (dataAlerta, descricao, visualizacao, fkComponente, fkDispositivo, fkLinha, fkCaptura) 
+VALUES ('2024-10-23 14:45:00', 'Componente 8 está abaixo do limite de 50.0: valor atual é 30.6', 0, 8, 1, 1, 4);
+
+-- Alerta para captura de 2 dias atrás
+INSERT INTO alerta (dataAlerta, descricao, visualizacao, fkComponente, fkDispositivo, fkLinha, fkCaptura) 
+VALUES ('2024-10-22 08:30:00', 'Componente 6 está abaixo do limite de 5.0: valor atual é 5.0', 0, 6, 1, 1, 5);
+
+INSERT INTO alerta (dataAlerta, descricao, visualizacao, fkComponente, fkDispositivo, fkLinha, fkCaptura) 
+VALUES ('2024-10-22 12:10:00', 'Componente 8 está abaixo do limite de 50.0: valor atual é 42.7', 0, 8, 1, 1, 6);
+
+-- Alerta para captura de 3 dias atrás
+INSERT INTO alerta (dataAlerta, descricao, visualizacao, fkComponente, fkDispositivo, fkLinha, fkCaptura) 
+VALUES ('2024-10-21 10:20:00', 'Componente 6 está abaixo do limite de 5.0: valor atual é 3.9', 0, 6, 1, 1, 7);
+
+INSERT INTO alerta (dataAlerta, descricao, visualizacao, fkComponente, fkDispositivo, fkLinha, fkCaptura) 
+VALUES ('2024-10-21 13:50:00', 'Componente 8 está acima do limite de 50.0: valor atual é 65.4', 0, 8, 1, 1, 8);
+
+-- Alerta para captura de 4 dias atrás
+INSERT INTO alerta (dataAlerta, descricao, visualizacao, fkComponente, fkDispositivo, fkLinha, fkCaptura) 
+VALUES ('2024-10-20 07:45:00', 'Componente 6 está acima do limite de 5.0: valor atual é 5.8', 0, 6, 2, 1, 9);
+
+INSERT INTO alerta (dataAlerta, descricao, visualizacao, fkComponente, fkDispositivo, fkLinha, fkCaptura) 
+VALUES ('2024-10-20 16:30:00', 'Componente 8 está abaixo do limite de 50.0: valor atual é 23.1', 0, 8, 2, 1, 10);
+
+-- Alerta para captura de 5 dias atrás
+INSERT INTO alerta (dataAlerta, descricao, visualizacao, fkComponente, fkDispositivo, fkLinha, fkCaptura) 
+VALUES ('2024-10-19 09:00:00', 'Componente 6 está abaixo do limite de 5.0: valor atual é 4.2', 0, 6, 2, 1, 11);
+
+INSERT INTO alerta (dataAlerta, descricao, visualizacao, fkComponente, fkDispositivo, fkLinha, fkCaptura) 
+VALUES ('2024-10-19 15:20:00', 'Componente 8 está acima do limite de 50.0: valor atual é 78.3', 0, 8, 2, 1, 12);
