@@ -1,5 +1,5 @@
 CREATE DATABASE securepass;
-USE securepass;
+USE securepass; 
 
 CREATE TABLE empresa (
     NR INT PRIMARY KEY ,
@@ -150,6 +150,69 @@ VALUES (4.2, '2024-10-19 09:00:00', 6, 1, 2);
 INSERT INTO captura (registro, dataRegistro, fkComponente, fkLinha, fkDispositivo) 
 VALUES (78.3, '2024-10-19 15:20:00', 8, 1, 2);
 
+-- Inserções para o dia de hoje (substitua com a data atual, por exemplo: '2024-10-24')
+INSERT INTO captura (registro, dataRegistro, fkComponente, fkLinha, fkDispositivo) 
+VALUES (3.5, '2024-10-24 10:00:00', 6, 1, 1);
+
+INSERT INTO captura (registro, dataRegistro, fkComponente, fkLinha, fkDispositivo) 
+VALUES (15.2, '2024-10-24 11:30:00', 8, 1, 1);
+
+-- Inserções para 1 dia atrás
+INSERT INTO captura (registro, dataRegistro, fkComponente, fkLinha, fkDispositivo) 
+VALUES (4.8, '2024-10-23 09:15:00', 6, 1, 1);
+
+INSERT INTO captura (registro, dataRegistro, fkComponente, fkLinha, fkDispositivo) 
+VALUES (30.6, '2024-10-23 14:45:00', 8, 1, 1);
+
+-- Inserções para 2 dias atrás
+INSERT INTO captura (registro, dataRegistro, fkComponente, fkLinha, fkDispositivo) 
+VALUES (5.0, '2024-10-22 08:30:00', 6, 1, 1);
+
+INSERT INTO captura (registro, dataRegistro, fkComponente, fkLinha, fkDispositivo) 
+VALUES (42.7, '2024-10-22 12:10:00', 8, 1, 1);
+
+-- Inserções para 3 dias atrás
+INSERT INTO captura (registro, dataRegistro, fkComponente, fkLinha, fkDispositivo) 
+VALUES (3.9, '2024-10-21 10:20:00', 1, 1, 1);
+
+INSERT INTO captura (registro, dataRegistro, fkComponente, fkLinha, fkDispositivo) 
+VALUES (42.7, '2024-10-22 12:10:00', 5, 1, 1);
+
+-- Inserções para 3 dias atrás
+INSERT INTO captura (registro, dataRegistro, fkComponente, fkLinha, fkDispositivo) 
+VALUES (3.9, '2024-10-21 10:20:00', 5, 1, 1);
+
+INSERT INTO captura (registro, dataRegistro, fkComponente, fkLinha, fkDispositivo) 
+VALUES (65.4, '2024-10-21 13:50:00', 4, 1, 1);
+
+-- Inserções para 4 dias atrás
+INSERT INTO captura (registro, dataRegistro, fkComponente, fkLinha, fkDispositivo) 
+VALUES (5.8, '2024-10-20 07:45:00', 1, 1, 1);
+
+INSERT INTO captura (registro, dataRegistro, fkComponente, fkLinha, fkDispositivo) 
+VALUES (23.1, '2024-10-20 16:30:00', 4, 1, 1);
+
+-- Inserções para 5 dias atrás
+INSERT INTO captura (registro, dataRegistro, fkComponente, fkLinha, fkDispositivo) 
+VALUES (4.2, '2024-10-19 09:00:00', 1, 1, 1);
+
+INSERT INTO captura (registro, dataRegistro, fkComponente, fkLinha, fkDispositivo) 
+VALUES (23.1, '2024-10-20 16:30:00', 5, 1, 1);
+
+-- Inserções para 5 dias atrás
+INSERT INTO captura (registro, dataRegistro, fkComponente, fkLinha, fkDispositivo) 
+VALUES (4.2, '2024-10-19 09:00:00', 5, 1, 1);
+
+
+INSERT INTO captura (registro, dataRegistro, fkComponente, fkLinha, fkDispositivo) 
+VALUES (78.3, '2024-10-19 15:20:00', 4, 1, 1);
+
+INSERT INTO captura (registro, dataRegistro, fkComponente, fkLinha, fkDispositivo) 
+VALUES (4.2, '2024-10-19 09:00:00', 5, 1, 2);
+
+INSERT INTO captura (registro, dataRegistro, fkComponente, fkLinha, fkDispositivo) 
+VALUES (78.3, '2024-10-19 15:20:00', 4, 1, 2);
+
 INSERT INTO captura (registro, fkComponente, fkLinha, fkDispositivo) 
 VALUES 
 (50.0, 1, 1, 1),
@@ -258,12 +321,19 @@ VALUES ('2024-10-19 09:00:00', 'Componente 6 está abaixo do limite de 5.0: valo
 INSERT INTO alerta (dataAlerta, descricao, visualizacao, fkComponente, fkDispositivo, fkLinha, fkCaptura) 
 VALUES ('2024-10-19 15:20:00', 'Componente 8 está acima do limite de 50.0: valor atual é 78.3', 0, 8, 2, 1, 12);
 
+-- Alerta para captura de 5 dias atrás
+INSERT INTO alerta (dataAlerta, descricao, visualizacao, fkComponente, fkDispositivo, fkLinha, fkCaptura) 
+VALUES ('2024-10-19 09:00:00', 'Componente 6 está abaixo do limite de 5.0: valor atual é 4.2', 0, 6, 1, 1, 39);
 
+INSERT INTO alerta (dataAlerta, descricao, visualizacao, fkComponente, fkDispositivo, fkLinha, fkCaptura) 
+VALUES ('2024-10-19 15:20:00', 'Componente 8 está acima do limite de 50.0: valor atual é 78.3', 0, 8, 1, 1, 40);
+
+select * from captura;
 INSERT INTO alerta (descricao, visualizacao, fkComponente, fkDispositivo, fkLinha, fkCaptura) 
 VALUES
-('Componente 1 (CPU) está acima do limite de 50.0: valor atual é 50.0', 0, 1, 1, 1, 13),
-('Componente 2 (RAM) está acima do limite de 70.0: valor atual é 70.0', 0, 2, 1, 1, 14),
-('Componente 1 (CPU) está acima do limite de 50.0: valor atual é 55.0', 0, 1, 1, 1, 15),
-('Componente 2 (RAM) está acima do limite de 70.0: valor atual é 80.0', 0, 2, 1, 1, 16),
-('Componente 1 (CPU) está acima do limite de 50.0: valor atual é 60.0', 0, 1, 1, 1, 17),
-('Componente 2 (RAM) está acima do limite de 70.0: valor atual é 90.0', 0, 2, 1, 1, 18);
+('Componente 1 (CPU) está acima do limite de 50.0: valor atual é 50.0', 0, 1, 1, 1, 23),
+('Componente 2 (RAM) está acima do limite de 70.0: valor atual é 70.0', 0, 2, 1, 1, 39),
+('Componente 1 (CPU) está acima do limite de 50.0: valor atual é 55.0', 0, 1, 1, 1, 25),
+('Componente 2 (RAM) está acima do limite de 70.0: valor atual é 80.0', 0, 2, 1, 1, 37),
+('Componente 1 (CPU) está acima do limite de 50.0: valor atual é 60.0', 0, 1, 1, 1, 31),
+('Componente 2 (RAM) está acima do limite de 70.0: valor atual é 90.0', 0, 2, 1, 1, 38);
