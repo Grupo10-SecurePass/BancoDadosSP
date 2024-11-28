@@ -76,7 +76,7 @@ CREATE TABLE dispositivo (
 
 INSERT INTO dispositivo(nome, ipv4Catraca, status, fkLinha) VALUES
 ('DESKTOP-17C842E', "98.81.77.174",1, 1),
-('MaquinaTeste', "98.81.77.174",1, 1);
+('MaquinaTeste', "98.81.78.174",1, 1);
 
 CREATE TABLE componente (
     idComponente INT PRIMARY KEY AUTO_INCREMENT,
@@ -92,7 +92,9 @@ INSERT INTO componente(nome, unidadeDeMedida) VALUES
 ('RedeEnviada', 'MB'),
 ('FreqCPU', 'GHz'),
 ('PerdaPacote', '%'),
-('TempoResposta', 'ms');
+('TempoResposta', 'ms'),
+('PacoteRecebido', 'Pacotes'),
+('PacoteEnviado', 'Pacotes');
 
 CREATE TABLE captura (
     idCaptura INT PRIMARY KEY AUTO_INCREMENT,
@@ -148,6 +150,23 @@ VALUES (4.2, '2024-10-19 09:00:00', 6, 1, 2);
 INSERT INTO captura (registro, dataRegistro, fkComponente, fkLinha, fkDispositivo) 
 VALUES (78.3, '2024-10-19 15:20:00', 8, 1, 2);
 
+INSERT INTO captura (registro, fkComponente, fkLinha, fkDispositivo) 
+VALUES 
+(50.0, 1, 1, 1),
+(70.0, 1, 1, 1),
+(55.0, 1, 1, 1),
+(80.0, 1, 1, 1),
+(60.0, 1, 1, 1),
+(90.0, 1, 1, 1);
+
+INSERT INTO captura (registro, fkComponente, fkLinha, fkDispositivo) 
+VALUES 
+(50.0, 2, 1, 1),
+(70.0, 2, 1, 1),
+(55.0, 2, 1, 1),
+(80.0, 2, 1, 1),
+(60.0, 2, 1, 1),
+(90.0, 2, 1, 1);
 
 CREATE TABLE limite (
     idLimite INT PRIMARY KEY AUTO_INCREMENT,
@@ -238,3 +257,13 @@ VALUES ('2024-10-19 09:00:00', 'Componente 6 está abaixo do limite de 5.0: valo
 
 INSERT INTO alerta (dataAlerta, descricao, visualizacao, fkComponente, fkDispositivo, fkLinha, fkCaptura) 
 VALUES ('2024-10-19 15:20:00', 'Componente 8 está acima do limite de 50.0: valor atual é 78.3', 0, 8, 2, 1, 12);
+
+
+INSERT INTO alerta (descricao, visualizacao, fkComponente, fkDispositivo, fkLinha, fkCaptura) 
+VALUES
+('Componente 1 (CPU) está acima do limite de 50.0: valor atual é 50.0', 0, 1, 1, 1, 13),
+('Componente 2 (RAM) está acima do limite de 70.0: valor atual é 70.0', 0, 2, 1, 1, 14),
+('Componente 1 (CPU) está acima do limite de 50.0: valor atual é 55.0', 0, 1, 1, 1, 15),
+('Componente 2 (RAM) está acima do limite de 70.0: valor atual é 80.0', 0, 2, 1, 1, 16),
+('Componente 1 (CPU) está acima do limite de 50.0: valor atual é 60.0', 0, 1, 1, 1, 17),
+('Componente 2 (RAM) está acima do limite de 70.0: valor atual é 90.0', 0, 2, 1, 1, 18);
