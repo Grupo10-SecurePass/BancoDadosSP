@@ -44,7 +44,7 @@ INSERT INTO cargo (nome, descricao) VALUES
 CREATE TABLE usuario (
     idUsuario INT PRIMARY KEY AUTO_INCREMENT,
     nome VARCHAR(100),
-    cpf CHAR(11),
+    cpf CHAR(11) UNIQUE,
     email VARCHAR(256) UNIQUE NOT NULL,
 	CONSTRAINT chEmail CHECK (email like('%@%.%')),
     senha VARCHAR(45) NOT NULL,
@@ -63,7 +63,7 @@ INSERT INTO usuario (nome, cpf, email, senha, status, fkCargo, fkLinha, fkNR) VA
 ('Carlos Santos', '34567890123', 'carlos@gmail.com', 'senha1234', 1, 3, 1, 5223),
 ('Ana Costa', '45678901234', 'ana@gmail.com', 'senha1234', 1, 1, 2, 5223),
 ('Pedro Lima', '56789012345', 'pedro@gmail.com', 'senha1234', 1, 2, 1, 5223),
-('Gabriel Gomes', '56789012345', 'gabriel@gmail.com', 'senha1234', 1, 2, 2, 5223);
+('Gabriel Gomes', '56789012344', 'gabriel@gmail.com', 'senha1234', 1, 2, 2, 5223);
 
 CREATE TABLE dispositivo (
     idDispositivo INT PRIMARY KEY AUTO_INCREMENT,
