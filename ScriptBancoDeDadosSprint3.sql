@@ -75,7 +75,7 @@ CREATE TABLE dispositivo (
 );
 
 INSERT INTO dispositivo(nome, ipv4Catraca, status, fkLinha) VALUES
-('DESKTOP-17C842E', "98.81.77.174",1, 1),
+('ClienteEC2', "3.81.255.141",1, 1),
 ('MaquinaTeste', "98.81.78.174",1, 1);
 
 CREATE TABLE componente (
