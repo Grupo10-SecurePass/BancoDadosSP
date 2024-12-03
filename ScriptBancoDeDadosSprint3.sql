@@ -155,3 +155,8 @@ CREATE TABLE alerta (
    fkCaptura INT,
    CONSTRAINT fkAlertaCaptura FOREIGN KEY (fkCaptura) REFERENCES captura(idCaptura)
 );
+
+CREATE TABLE Chave (
+idChave INT PRIMARY KEY AUTO_INCREMENT,
+Chave VARCHAR(200)
+);
